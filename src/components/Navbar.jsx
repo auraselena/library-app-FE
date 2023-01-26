@@ -1,7 +1,8 @@
-import { Center, Flex, Spacer, Grid, GridItem, Box, IconButton, Text, Link, Menu, Button, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider } from "@chakra-ui/react";
+import { Center, Flex, Spacer, Grid, GridItem, Box, IconButton, Text, Menu, Button, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider } from "@chakra-ui/react";
 import { GiBookshelf } from "react-icons/gi";
 import { TbChartInfographic } from "react-icons/tb";
 import { ExternalLinkIcon, AddIcon, RepeatIcon, EditIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -11,9 +12,11 @@ const Navbar = () => {
           <GridItem w="100%" h="10">
             <Flex>
               <GiBookshelf size={28} style={({ marginLeft: 10 }, { marginRight: 10 })} />
-              <Text fontSize="2xl" as="b">
-                PusKita
-              </Text>
+              <Link to="/dashboard">
+                <Text fontSize="2xl" as="b">
+                  PusKita
+                </Text>
+              </Link>
             </Flex>
           </GridItem>
           <Spacer />
