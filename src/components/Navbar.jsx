@@ -1,10 +1,21 @@
+import React from "react";
 import { Center, Flex, Spacer, Grid, GridItem, Box, IconButton, Text, Menu, Button, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider } from "@chakra-ui/react";
 import { GiBookshelf } from "react-icons/gi";
-import { TbChartInfographic } from "react-icons/tb";
-import { ExternalLinkIcon, AddIcon, RepeatIcon, EditIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { Spinner } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { username } = useSelector((state) => {
+    return {
+      username: state.usersReducer.username,
+    };
+  });
+
+  const logoutButton = () => {
+    console.log("user siap logout");
+  };
+
   return (
     <div>
       <Box bg="#19323C" w="100%" p={4} color="#F3F7F0">
@@ -47,13 +58,23 @@ const Navbar = () => {
           </Flex>
           <Spacer />
           <GridItem w="100%">
-            <Button colorScheme="whiteAlpha">
-              <Link>
+            {props.loading ? (
+              <Spinner color="red.500" />
+            ) : username ? (
+              <Button colorScheme="whiteAlpha" onClick={logoutButton}>
                 <Text fontSize="lg" as="b">
                   Logout
                 </Text>
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button colorScheme="whiteAlpha">
+                  <Text fontSize="lg" as="b">
+                    Login
+                  </Text>
+                </Button>
               </Link>
-            </Button>
+            )}
           </GridItem>
         </Grid>
       </Box>

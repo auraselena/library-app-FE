@@ -17,6 +17,7 @@ const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  // 1. masukin username sama password --> database
   const buttonLogin = () => {
     console.log("user siap login");
     Axios.post(API_url + "/users/login", {
@@ -26,7 +27,7 @@ const Login = () => {
       .then((response) => {
         console.log(response.data);
         dispatch(loginAction(response.data));
-        localStorage.setItem("library_login", response.data);
+        localStorage.setItem("library_login", response.data.token);
         navigate("/", { replace: true });
       })
       .catch((err) => {

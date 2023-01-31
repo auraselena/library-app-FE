@@ -3,8 +3,11 @@ import Axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { API_url } from "../helper";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +25,7 @@ const Register = () => {
     })
       .then((response) => {
         console.log(response.data);
+        navigate("/", { replace: true });
       })
       .catch((err) => console.log(err));
   };
