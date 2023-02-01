@@ -5,3 +5,10 @@ export const loginAction = (data) => {
     payload: data,
   };
 };
+
+export const logoutAction = (data) => {
+  localStorage.removeItem("library_login");
+  return {
+    type: "LOGOUT",
+  };
+};

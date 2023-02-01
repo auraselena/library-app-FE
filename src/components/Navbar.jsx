@@ -3,9 +3,12 @@ import { Center, Flex, Spacer, Grid, GridItem, Box, IconButton, Text, Menu, Butt
 import { GiBookshelf } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutAction } from "../actions/userAction";
 
 const Navbar = (props) => {
+  const dispatch = useDispatch();
+
   const { username } = useSelector((state) => {
     return {
       username: state.usersReducer.username,
@@ -13,7 +16,7 @@ const Navbar = (props) => {
   });
 
   const logoutButton = () => {
-    console.log("user siap logout");
+    dispatch(logoutAction());
   };
 
   return (
